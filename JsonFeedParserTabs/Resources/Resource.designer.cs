@@ -47,6 +47,9 @@ namespace JsonFeedParserTabs
 			// aapt resource value: 0x7f020000
 			public const int Icon = 2130837504;
 			
+			// aapt resource value: 0x7f020001
+			public const int Placeholder = 2130837505;
+			
 			static Drawable()
 			{
 				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
@@ -61,7 +64,28 @@ namespace JsonFeedParserTabs
 		{
 			
 			// aapt resource value: 0x7f050000
-			public const int myButton = 2131034112;
+			public const int FeaturedImg = 2131034112;
+			
+			// aapt resource value: 0x7f050002
+			public const int FeedContent = 2131034114;
+			
+			// aapt resource value: 0x7f050001
+			public const int FeedTitle = 2131034113;
+			
+			// aapt resource value: 0x7f050007
+			public const int description = 2131034119;
+			
+			// aapt resource value: 0x7f050004
+			public const int listView = 2131034116;
+			
+			// aapt resource value: 0x7f050003
+			public const int progressBar = 2131034115;
+			
+			// aapt resource value: 0x7f050005
+			public const int thumbnail = 2131034117;
+			
+			// aapt resource value: 0x7f050006
+			public const int title = 2131034118;
 			
 			static Id()
 			{
@@ -81,6 +105,9 @@ namespace JsonFeedParserTabs
 			
 			// aapt resource value: 0x7f030001
 			public const int FeedsList = 2130903041;
+			
+			// aapt resource value: 0x7f030002
+			public const int ListRowLayout = 2130903042;
 			
 			static Layout()
 			{

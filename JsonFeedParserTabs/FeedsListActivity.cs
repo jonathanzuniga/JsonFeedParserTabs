@@ -29,7 +29,7 @@ namespace JsonFeedParserTabs
 			SetContentView (Resource.Layout.FeedsList);
 
 			// Initializing listView.
-			listView = FindViewById<ListView> (Resource.Id.feedList);
+			listView = FindViewById<ListView> (Resource.Id.listView);
 			listView.ItemClick += OnListItemClick;
 
 			progressBar = FindViewById<ProgressBar> (Resource.Id.progressBar);
