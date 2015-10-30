@@ -38,7 +38,8 @@ namespace JsonFeedParserTabs
 		}
 
 		// Handling home button click event.
-		public override bool OnOptionsItemSelected(IMenuItem item){
+		public override bool OnOptionsItemSelected(IMenuItem item)
+		{
 			switch (item.ItemId) {
 				case Android.Resource.Id.Home:
 					Finish();

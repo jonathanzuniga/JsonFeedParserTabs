@@ -11,14 +11,14 @@ namespace JsonFeedParserTabs
 		Activity context;
 		List<Post> list;
 
-		public CustomListAdapter (Activity _context, List<Post> _list)
-			:base()
+		public CustomListAdapter (Activity _context, List<Post> _list) : base()
 		{
 			this.context = _context;
 			this.list = _list;
 		}
 
-		public override int Count {
+		public override int Count
+		{
 			get { return list.Count; }
 		}
 
@@ -27,7 +27,8 @@ namespace JsonFeedParserTabs
 			return position;
 		}
 
-		public override Post this[int index] {
+		public override Post this[int index]
+		{
 			get { return list [index]; }
 		}
 
@@ -41,17 +42,17 @@ namespace JsonFeedParserTabs
 				view = context.LayoutInflater.Inflate (Resource.Layout.ListRowLayout, parent, false);
 
 			Post item = this [position];
+
 			view.FindViewById<TextView>(Resource.Id.title).Text = Android.Text.Html.FromHtml(item.title).ToString();
 			view.FindViewById<TextView>(Resource.Id.description).Text = item.date;
-
 
 			using (var imageView = view.FindViewById<ImageView> (Resource.Id.thumbnail)) {
 				string url = Android.Text.Html.FromHtml (item.thumbnail).ToString ();
 
 				// Download and display image.
-				Koush.UrlImageViewHelper.SetUrlDrawable (imageView, 
-					url, Resource.Drawable.Placeholder);
+				Koush.UrlImageViewHelper.SetUrlDrawable (imageView, url, Resource.Drawable.Placeholder);
 			}
+
 			return view;
 		}
 	}
