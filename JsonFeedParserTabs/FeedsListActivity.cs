@@ -16,7 +16,7 @@ namespace JsonFeedParserTabs
 	public class MainActivity : Activity
 	{
 		ListView listView;
-//		ProgressBar progressBar;
+		ProgressBar progressBar;
 		RootObject result;
 
 		string url = "http://javatechig.com/api/get_category_posts/?dev=1&slug=android";
@@ -31,22 +31,10 @@ namespace JsonFeedParserTabs
 			this.ActionBar.NavigationMode = ActionBarNavigationMode.Tabs;
 
 			AddTab (" Tab 1", new SampleTabFragment (this));
-//			AddTab (" Tab 2", new SampleTabFragment2 ());
+			AddTab (" Tab 2", new SampleTabFragment2 (this));
 
 			if (bundle != null)
 				this.ActionBar.SelectTab(this.ActionBar.GetTabAt(bundle.GetInt("tab")));
-
-//			// Initializing listView.
-//			listView = FindViewById<ListView> (Resource.Id.listView);
-//			listView.ItemClick += OnListItemClick;
-//
-//			progressBar = FindViewById<ProgressBar> (Resource.Id.progressBar);
-//
-//			// Showing loading progressBar.
-//			progressBar.Visibility = ViewStates.Visible;
-//
-//			// Download and display data in url.
-//			downloadJsonFeedAsync (url);
 		}
 
 		protected override void OnSaveInstanceState(Bundle outState)
@@ -90,16 +78,16 @@ namespace JsonFeedParserTabs
 			{
 				base.OnCreateView (inflater, container, savedInstanceState);
 
-				var view = inflater.Inflate (Resource.Layout.Tab, container, false);
+				var view = context.LayoutInflater.Inflate (Resource.Layout.Tab, container, false);
 
 				// Initializing listView.
 				context.listView = view.FindViewById<ListView> (Resource.Id.listView);
 				context.listView.ItemClick += context.OnListItemClick;
 	
-//				progressBar = view.FindViewById<ProgressBar> (Resource.Id.progressBar);
-//	
-//				// Showing loading progressBar.
-//				progressBar.Visibility = ViewStates.Visible;
+				context.progressBar = view.FindViewById<ProgressBar> (Resource.Id.progressBar);
+	
+				// Showing loading progressBar.
+				context.progressBar.Visibility = ViewStates.Visible;
 	
 				// Download and display data in url.
 				context.downloadJsonFeedAsync (context.url);
@@ -108,20 +96,35 @@ namespace JsonFeedParserTabs
 			}
 		}
 
-//		class SampleTabFragment2 : Fragment
-//		{
-//			public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
-//			{
-//				base.OnCreateView(inflater, container, savedInstanceState);
-//
-//				var view = inflater.Inflate(Resource.Layout.Tab, container, false);
-//				var sampleTextView = view.FindViewById<TextView>(Resource.Id.sampleTextView);
-//
-//				sampleTextView.Text = "Sample fragment text 2.";
-//
-//				return view;
-//			}
-//		}
+		class SampleTabFragment2 : Fragment
+		{
+			private MainActivity context;
+			public SampleTabFragment2(MainActivity _context) : base()
+			{
+				this.context = _context;
+			}
+
+			public override View OnCreateView (LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
+			{
+				base.OnCreateView (inflater, container, savedInstanceState);
+
+				var view = context.LayoutInflater.Inflate (Resource.Layout.Tab, container, false);
+
+				// Initializing listView.
+				context.listView = view.FindViewById<ListView> (Resource.Id.listView);
+				context.listView.ItemClick += context.OnListItemClick;
+
+				context.progressBar = view.FindViewById<ProgressBar> (Resource.Id.progressBar);
+
+				// Showing loading progressBar.
+				context.progressBar.Visibility = ViewStates.Visible;
+
+				// Download and display data in url.
+				context.downloadJsonFeedAsync (context.url);
+
+				return view;
+			}
+		}
 
 		public async void downloadJsonFeedAsync(String url)
 		{
@@ -138,7 +141,7 @@ namespace JsonFeedParserTabs
 			// Update listview.
 			RunOnUiThread (() => {
 				listView.Adapter = new CustomListAdapter(this, result.posts);
-//				progressBar.Visibility = ViewStates.Gone;
+				progressBar.Visibility = ViewStates.Gone;
 			});
 		}
 
