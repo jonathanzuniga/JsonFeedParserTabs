@@ -69,6 +69,7 @@ namespace JsonFeedParserTabs
 		class SampleTabFragment : Fragment
 		{
 			private MainActivity context;
+			public SampleTabFragment() {}
 			public SampleTabFragment(MainActivity _context) : base()
 			{
 				this.context = _context;
@@ -78,19 +79,24 @@ namespace JsonFeedParserTabs
 			{
 				base.OnCreateView (inflater, container, savedInstanceState);
 
-				var view = context.LayoutInflater.Inflate (Resource.Layout.Tab, container, false);
+//				var view = context.LayoutInflater.Inflate (Resource.Layout.Tab, container, false);
+				var view = inflater.Inflate (Resource.Layout.Tab, container, false);
 
 				// Initializing listView.
-				context.listView = view.FindViewById<ListView> (Resource.Id.listView);
-				context.listView.ItemClick += context.OnListItemClick;
-	
-				context.progressBar = view.FindViewById<ProgressBar> (Resource.Id.progressBar);
-	
-				// Showing loading progressBar.
-				context.progressBar.Visibility = ViewStates.Visible;
-	
-				// Download and display data in url.
-				context.downloadJsonFeedAsync (context.url);
+				try {
+					context.listView = view.FindViewById<ListView> (Resource.Id.listView);
+					context.listView.ItemClick += context.OnListItemClick;
+
+					context.progressBar = view.FindViewById<ProgressBar> (Resource.Id.progressBar);
+
+					// Showing loading progressBar.
+					context.progressBar.Visibility = ViewStates.Visible;
+
+					// Download and display data in url.
+					context.downloadJsonFeedAsync (context.url);
+				} catch(Exception error) {
+					Console.WriteLine ("Error occured at Task.delay(): {0}", error);
+				}
 
 				return view;
 			}
@@ -99,6 +105,7 @@ namespace JsonFeedParserTabs
 		class SampleTabFragment2 : Fragment
 		{
 			private MainActivity context;
+			public SampleTabFragment2() {}
 			public SampleTabFragment2(MainActivity _context) : base()
 			{
 				this.context = _context;
@@ -108,19 +115,24 @@ namespace JsonFeedParserTabs
 			{
 				base.OnCreateView (inflater, container, savedInstanceState);
 
-				var view = context.LayoutInflater.Inflate (Resource.Layout.Tab, container, false);
+//				var view = context.LayoutInflater.Inflate (Resource.Layout.Tab, container, false);
+				var view = inflater.Inflate (Resource.Layout.Tab, container, false);
 
 				// Initializing listView.
-				context.listView = view.FindViewById<ListView> (Resource.Id.listView);
-				context.listView.ItemClick += context.OnListItemClick;
+				try {
+					context.listView = view.FindViewById<ListView> (Resource.Id.listView);
+					context.listView.ItemClick += context.OnListItemClick;
 
-				context.progressBar = view.FindViewById<ProgressBar> (Resource.Id.progressBar);
+					context.progressBar = view.FindViewById<ProgressBar> (Resource.Id.progressBar);
 
-				// Showing loading progressBar.
-				context.progressBar.Visibility = ViewStates.Visible;
+					// Showing loading progressBar.
+					context.progressBar.Visibility = ViewStates.Visible;
 
-				// Download and display data in url.
-				context.downloadJsonFeedAsync (context.url);
+					// Download and display data in url.
+					context.downloadJsonFeedAsync (context.url);
+				} catch(Exception error) {
+					Console.WriteLine ("Error occured at Task.delay(): {0}", error);
+				}
 
 				return view;
 			}

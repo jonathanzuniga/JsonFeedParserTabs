@@ -34,7 +34,7 @@ namespace JsonFeedParserTabs
 
 		public override View GetView (int position, View convertView, ViewGroup parent)
 		{
-			View view = convertView; 
+			View view = convertView;
 
 			// Re-use an existing view, if one is available,
 			// otherwise create a new one.
