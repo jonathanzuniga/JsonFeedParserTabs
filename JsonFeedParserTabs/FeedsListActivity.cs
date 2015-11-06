@@ -12,7 +12,8 @@ using System.Linq;
 
 namespace JsonFeedParserTabs
 {
-	[Activity (Label = "Feed Reader", MainLauncher = true, Icon = "@drawable/icon")]
+	[Activity (Label = "Feed Reader", MainLauncher = true, Icon = "@drawable/icon", 
+		ConfigurationChanges=Android.Content.PM.ConfigChanges.Orientation | Android.Content.PM.ConfigChanges.ScreenSize)]
 	public class MainActivity : Activity
 	{
 		ListView listView;
@@ -79,24 +80,19 @@ namespace JsonFeedParserTabs
 			{
 				base.OnCreateView (inflater, container, savedInstanceState);
 
-//				var view = context.LayoutInflater.Inflate (Resource.Layout.Tab, container, false);
 				var view = inflater.Inflate (Resource.Layout.Tab, container, false);
 
 				// Initializing listView.
-				try {
-					context.listView = view.FindViewById<ListView> (Resource.Id.listView);
-					context.listView.ItemClick += context.OnListItemClick;
+				context.listView = view.FindViewById<ListView> (Resource.Id.listView);
+				context.listView.ItemClick += context.OnListItemClick;
 
-					context.progressBar = view.FindViewById<ProgressBar> (Resource.Id.progressBar);
+				context.progressBar = view.FindViewById<ProgressBar> (Resource.Id.progressBar);
 
-					// Showing loading progressBar.
-					context.progressBar.Visibility = ViewStates.Visible;
+				// Showing loading progressBar.
+				context.progressBar.Visibility = ViewStates.Visible;
 
-					// Download and display data in url.
-					context.downloadJsonFeedAsync (context.url);
-				} catch(Exception error) {
-					Console.WriteLine ("Error occured at Task.delay(): {0}", error);
-				}
+				// Download and display data in url.
+				context.downloadJsonFeedAsync (context.url);
 
 				return view;
 			}
@@ -115,24 +111,19 @@ namespace JsonFeedParserTabs
 			{
 				base.OnCreateView (inflater, container, savedInstanceState);
 
-//				var view = context.LayoutInflater.Inflate (Resource.Layout.Tab, container, false);
 				var view = inflater.Inflate (Resource.Layout.Tab, container, false);
 
 				// Initializing listView.
-				try {
-					context.listView = view.FindViewById<ListView> (Resource.Id.listView);
-					context.listView.ItemClick += context.OnListItemClick;
+				context.listView = view.FindViewById<ListView> (Resource.Id.listView);
+				context.listView.ItemClick += context.OnListItemClick;
 
-					context.progressBar = view.FindViewById<ProgressBar> (Resource.Id.progressBar);
+				context.progressBar = view.FindViewById<ProgressBar> (Resource.Id.progressBar);
 
-					// Showing loading progressBar.
-					context.progressBar.Visibility = ViewStates.Visible;
+				// Showing loading progressBar.
+				context.progressBar.Visibility = ViewStates.Visible;
 
-					// Download and display data in url.
-					context.downloadJsonFeedAsync (context.url);
-				} catch(Exception error) {
-					Console.WriteLine ("Error occured at Task.delay(): {0}", error);
-				}
+				// Download and display data in url.
+				context.downloadJsonFeedAsync (context.url);
 
 				return view;
 			}
